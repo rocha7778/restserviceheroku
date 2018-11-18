@@ -3,65 +3,27 @@ const bodyParser = require('body-parser')
 const app = express()
 const config = require('./config/config')
 
+const mongoose = require('mongoose');
 
-app.use(bodyParser.urlencoded({
-    extended: false
-}))
-
-// parse application/json
-app.use(bodyParser.json())
+app.use(require('./routes/usuario'))
 
 
 
-app.get('/usuarios', function(req, res) {
 
-    res.json('getUsuarios')
+mongoose.connect('mongodb://localhost:27017/cafe', (err, resp) => {
 
-})
+    if (err) {
 
-
-app.post('/usuario/:id', function(req, res) {
-
-    let id = req.params.id;
-    let body = req.body;
-
-    if (body.nombre == undefined || body.nombre == '') {
-
-        res.status(400).json({
-            ok: false,
-            message: 'el nombre de la persona es requerido'
-        })
-
-    } else {
-        res.json({
-            operation: 'pos',
-            id: id,
-            url: req.originalUrl,
-            body: body
-        })
-
+        console.log('Se presento un error al conectarse a mongo' + err);
+        return 1;
     }
 
+    console.log(`Conexion exitosa `);
+}).catch((err) => {
+    console.log(err);
 })
 
 
-app.put('/usuario/:id', function(req, res) {
-
-    let id = req.params.id;
-    res.json({
-        operation: 'put',
-        id: id,
-        url: req.originalUrl
-    })
-
-})
-
-
-app.delete('/usuario', function(req, res) {
-
-    res.json('delete')
-
-})
 app.listen(config.port, () => {
     console.log(`escuchando en el puerto ${config.port}`);
 })
