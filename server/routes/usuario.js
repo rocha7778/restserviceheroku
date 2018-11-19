@@ -22,7 +22,7 @@ app.get('/usuarios', function(req, res) {
 
 
 
-    Usuario.find({}).skip(desde).limit(hasta).exec((err, usuarios) => {
+    Usuario.find({ estado: true }).skip(desde).limit(hasta).exec((err, usuarios) => {
 
         if (err) {
 
@@ -142,11 +142,37 @@ app.put('/usuario/:id', function(req, res) {
 app.delete('/usuario/:id', function(req, res) {
 
     let id = req.params.id;
-    res.json({
-        operation: 'delete',
-        id: id,
-        url: req.originalUrl
-    })
+
+
+
+
+
+    Usuario.findOneAndUpdate(id, { estado: false }, {
+        new: true,
+        runValidators: true
+    }, (err, usuarioDB) => {
+
+
+        if (err) {
+
+            return res.status(400).json({
+                ok: false,
+                message: err
+            })
+        }
+
+
+
+        res.json({
+            operation: 'delete',
+            id: id,
+            url: req.originalUrl,
+            usuario: usuarioDB
+        })
+
+
+    });
+
 
 
 })

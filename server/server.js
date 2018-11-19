@@ -10,7 +10,7 @@ app.use(require('./routes/usuario'))
 
 
 
-mongoose.connect('mongodb://localhost:27017/cafe', (err, resp) => {
+mongoose.connect(config.urlBd, (err, resp) => {
 
     if (err) {
 
