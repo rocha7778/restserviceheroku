@@ -17,5 +17,8 @@ if (process.env.NODE_ENV == 'dev') {
     urlBd = process.env.MONGO_URI;
 }
 
+process.env.EXPIRACION_TOKEN = 60 * 60 * 24 * 30;
+process.env.SEDD_TOKEN = process.env.SEDD_TOKEN || 'este-es-e-seed-desarrollo'
+
 exports.port = port;
 exports.urlBd = urlBd;

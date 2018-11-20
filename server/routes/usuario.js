@@ -15,6 +15,11 @@ app.use(bodyParser.json())
 
 
 
+
+
+
+
+
 app.get('/usuarios', function(req, res) {
 
     let desde = parseInt(req.query.desde || 0);
@@ -32,7 +37,6 @@ app.get('/usuarios', function(req, res) {
             })
         }
 
-        console.log(usuarios);
 
         res.json({
             operation: 'get',
@@ -51,6 +55,8 @@ app.get('/usuarios', function(req, res) {
 
 
 })
+
+
 
 
 app.post('/usuario/:id', function(req, res) {
