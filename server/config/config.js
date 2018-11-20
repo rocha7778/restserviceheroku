@@ -14,7 +14,7 @@ if (process.env.NODE_ENV == 'dev') {
     urlBd = 'mongodb://localhost:27017/cafe';
 
 } else {
-    urlBd = 'mongodb://rocha7778:bD6QdXt2PXbse4s@ds157571.mlab.com:57571/cafe';
+    urlBd = process.env.MONGO_URI;
 }
 
 exports.port = port;
