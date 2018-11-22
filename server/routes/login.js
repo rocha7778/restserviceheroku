@@ -37,7 +37,6 @@ app.post('/login', (req, res) => {
         }
 
         if (body.email != UsuarioDB.email) {
-
             return res.status(400).json({
                 ok: false,
                 message: 'Email  o contraseña incorrecta '
@@ -60,8 +59,8 @@ app.post('/login', (req, res) => {
             data: {
                 UsuarioDB
             }
-        }, 'este-es-e-seed-desarrollo', {
-            expiresIn: 60 * 60 * 24 * 30
+        }, process.env.SEDD_TOKEN, {
+            expiresIn: process.env.EXPIRACION_TOKEN
         })
 
 

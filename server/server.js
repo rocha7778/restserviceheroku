@@ -11,8 +11,6 @@ const mongoose = require('mongoose');
 // configuracion global de rutas
 app.use(require('./routes/index'))
 
-
-
 mongoose.connect(config.urlBd, (err, resp) => {
 
     if (err) {
