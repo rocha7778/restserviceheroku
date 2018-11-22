@@ -67,7 +67,7 @@ app.get('/usuarios', validarToken, (req, res) => {
 
 
 
-app.post('/usuario', (req, res) => {
+app.post('/usuario', [validarToken, verifyRolAdmin], (req, res) => {
 
 
 
