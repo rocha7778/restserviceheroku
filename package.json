@@ -5,7 +5,8 @@
     "main": "app.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node app.js"
+        "start": "node app.js",
+        "lint": "standard"
     },
     "author": "",
     "license": "ISC",
@@ -13,7 +14,9 @@
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.18.3",
         "express": "^4.16.4",
+        "google-auth-library": "^2.0.1",
         "jsonwebtoken": "^8.4.0",
+        "lint": "^1.1.2",
         "mongoose": "^5.3.12",
         "mongoose-unique-validator": "^2.0.2",
         "underscore": "^1.9.1"
@@ -21,5 +24,8 @@
     "engines": {
         "node": "8.12.0",
         "npm": "6.4.1"
+    },
+    "devDependencies": {
+        "standard": "^12.0.1"
     }
 }
