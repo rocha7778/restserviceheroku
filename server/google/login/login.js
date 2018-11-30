@@ -64,7 +64,7 @@ app.post('/google', async(req, res) => {
                 return res.json({
                     ok: true,
                     url: req.originalUrl,
-                    usuario: UsuarioDB,
+                    usuario: usuarioBD,
                     token: token
                 })
 
@@ -86,6 +86,15 @@ app.post('/google', async(req, res) => {
 
             })
 
+            let token = jwt.sign({
+
+                data: {
+                    usuarioBD
+                }
+            }, process.env.SEDD_TOKEN, {
+                expiresIn: process.env.EXPIRACION_TOKEN
+            })
+
             usuario.save(usuario, (err, usuarioBD) => {
 
 
@@ -100,7 +109,8 @@ app.post('/google', async(req, res) => {
                 return res.json({
                     ok: true,
                     usuarioBD: usuarioBD,
-                    message: 'Usuario creado exitosamente'
+                    message: 'Usuario creado exitosamente',
+                    token
 
 
                 })
