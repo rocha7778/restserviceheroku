@@ -17,7 +17,6 @@ var productoSchema = new Schema({
     },
     disponible: {
         type: Boolean,
-        required: true,
         default: true
     },
     categoria: {
