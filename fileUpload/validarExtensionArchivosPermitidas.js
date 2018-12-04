@@ -1,11 +1,12 @@
 let validarExtensionPermitidas = (extencionArchivo) => {
-  let extencionesPermitidas = ['jpg', 'giff', 'jpeg']
+    extencionArchivo = extencionArchivo.toLowerCase()
+    let extencionesPermitidas = ['jpg', 'giff', 'jpeg', 'png']
 
-  if (extencionesPermitidas.indexOf(extencionArchivo) < 0) {
-    return false
-  }
+    if (extencionesPermitidas.indexOf(extencionArchivo) < 0) {
+        return false
+    }
 
-  return true
+    return true
 }
 
 module.exports = validarExtensionPermitidas
